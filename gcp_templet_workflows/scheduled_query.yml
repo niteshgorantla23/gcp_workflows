@@ -1,0 +1,57 @@
+
+name: main_scheduled_query
+
+on:
+  workflow_dispatch:
+
+env:  
+  workload_identity_provider: ''
+  service_account: ''
+
+jobs:
+  build:
+    runs-on: [onprem-k8s-arc, lnx-amd64, enterprise, std, self-hosted]
+
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          ref: PROD
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+
+      # Step 3: Install required Python packages
+   
+      - name: Install required packages
+        run: |
+          pip install --upgrade pip
+          pip install google-cloud-bigquery-datatransfer
+          
+  
+
+      # Step 4: Authenticate to Google Cloud using Workload Identity Federation
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v0.4.0
+        with:
+          workload_identity_provider: '${{ env.workload_identity_provider }}'
+          service_account: '${{ env.service_account }}'
+
+      # Step 5: Set up gcloud CLI
+      - name: GCP setup
+        uses: google-github-actions/setup-gcloud@v1
+        with:
+          project_id: 'hcahde040-prod-data' # Specify your project ID
+
+      # Step 6: Deploy the scheduled query
+      - name: Deploy scheduled query
+        run: |
+          gcloud config set auth/impersonate_service_account '${{ env.service_account }}'
+          python ./src/scheduled_query/main.py
+          gcloud config unset auth/impersonate_service_account
