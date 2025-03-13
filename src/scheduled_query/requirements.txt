@@ -1,0 +1,4 @@
+google-cloud-bigquery>=3.29.0,<4.0.0
+google-cloud-bigquery-datatransfer>=3.18.0,<4.0.0
+protobuf>=3.20.3,<4.0.0
+google-api-core>=2.24.0,<3.0.0
