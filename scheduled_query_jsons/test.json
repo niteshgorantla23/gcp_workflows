@@ -1,0 +1,18 @@
+{
+    "project_id": "", #Must required field
+    "dataset_id": "", #Must required field
+    "display_name": "", #Must required field
+    "sql_file_path": "", # required field only while creating. Its not required field while updating
+    "destination_table_name_template": "", # Not required field 
+    "write_disposition": "",  # Not required field 
+    "partitioning_field": "", # Not required field 
+    "schedule": "",  # scheduling options are as follows "on-demand", "every 15mintues", "every 24hours", remove another schedule if you are using this schedule option
+    "schedule" : {
+        "start_time": "",   # scheduling options are as follows "02/16/25, 10:30 AM" always counts,  this will set to UTC 
+        "end_time": ""
+    },
+    "pubsub_topic": "", #not a required field
+    "manual_run": "", #not a required field, If you want start the manual run add the true in the field
+    "service_account_name": "", #its not a required field
+    "transfer_config_name": "" #its not a required field
+}
