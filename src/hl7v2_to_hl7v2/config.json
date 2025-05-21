@@ -1,0 +1,18 @@
+{
+  "project_id": "",
+  "region": "",
+  "source_hl7v2_store": "",
+  "dest_hl7v2_store": "",
+  "pubsub_subscription": "",
+  "staging_location": "",
+  "temp_location": "",
+  "setup_file": "",
+  "worker_machine_type": "n1-highmem-16",
+  "min_num_workers": 1,
+  "max_num_workers": 25,
+  "retry_config": {
+    "max_retries": 11,
+    "backoff_base": 2,
+    "max_wait_time": 6000
+  }
+}
