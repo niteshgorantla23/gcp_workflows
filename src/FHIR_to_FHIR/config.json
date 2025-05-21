@@ -1,0 +1,43 @@
+{
+  "project_id": "",
+  "region": "us-east4",
+  "fhir_store_url": "",
+  "pubsub_subscription": "",
+  "staging_location": "",
+  "temp_location": "",
+  "setup_file": "",
+  "min_num_workers": 1,
+  "max_num_workers": 30,
+  "retry_config": {
+    "max_retries": 11,
+    "backoff_base": 2,
+    "max_wait_time": 6000
+  },
+  "filter_config": {
+    "allowed_facilities": [
+      ""
+    ],
+    "location_filter": {
+      "code": "",
+      "value": ""
+    },
+    "organization_filter": {
+      "Sending Organization": [
+        ""
+      ],
+      "Insurance Organization": {
+        "system_contains": ""
+      }
+    },
+    "practitioner_filter": {
+      "system_contains": ""
+    },
+    "related_person_filter": {
+      "system_contains": ""
+    },
+    "provenance_filter": {
+      "control_id_url": "",
+      "value_url": ""
+    }
+  }
+}
